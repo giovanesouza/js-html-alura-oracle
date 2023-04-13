@@ -1,0 +1,44 @@
+<!-- 
+    Marina sempre teve o sonho de levar o mundo da programação para todas as pessoas do mundo, contudo, ela sabe que compreender um código não é tarefa muito trivial para iniciantes. Então, imagine para quem não é da área da programação! Porém, ela teve uma ideia.
+
+Primeiro, observe o seguinte código:
+ -->
+
+ <meta charset="UTF-8">
+<script>
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    mostra("<h1>Bem-vindos</h1>");
+    mostra("<p>Este é um simples programa</p>");
+
+
+
+// Agora, o mesmo código, mas escrito de maneira diferente:
+
+
+    function pulaLinha() {
+        document.write("<br>");
+    }
+
+    function exibeTitulo(titulo) {
+        document.write("<h1>" + titulo + "</h1>");
+        pulaLinha();
+    }
+
+    function exibeParagrafo(paragrafo) {
+        document.write("<p>" + paragrafo + "</p>");
+        pulaLinha();
+    }
+
+    // pede para alguém ler daqui em diante e veja se ele entende o que esta sendo feito
+    exibeTitulo("Bem-vindos");
+    exibeParagrafo("Este é um simples programa");
+
+</script>

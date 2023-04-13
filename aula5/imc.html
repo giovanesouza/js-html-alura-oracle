@@ -1,0 +1,44 @@
+<meta charset="UTF-8"/>
+
+
+<script>
+
+function pulaLinha() {
+    document.write("</br>");
+    document.write("</br>");
+}
+
+
+function mostra(frase) {
+    document.write(frase);
+    pulaLinha();
+}
+
+
+function calculaImc(peso, altura) {
+    return peso / (altura * altura);
+}
+
+// prompt =  função que recebe parâmetro e possui retorno.
+var nome = prompt("Informe seu nome:");
+var pesoInformado = prompt(nome + ", Informe seu peso:");
+var alturaInformada = prompt(nome + ", Informe sua altura:");
+
+var imc = calculaImc(pesoInformado, alturaInformada);
+
+mostra(nome + " seu IMC é de : " + imc);
+
+
+
+if(imc < 18.5) {
+    mostra("Você está com abaixo peso.")
+} else if(imc >= 18.5 && imc <= 24.9) {
+    mostra("Seu IMC está dentro da normalidade.")
+} else if (imc >= 25 && imc < 29.9) {
+    mostra("Seu IMC é de sobrepeso.")
+} else if (imc >= 30) {
+    mostra("Seu IMC é de obeso.")
+}
+
+
+</script>
