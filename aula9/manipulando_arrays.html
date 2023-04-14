@@ -1,0 +1,77 @@
+<meta charset="UTF-8" />
+
+<input />
+<button>Compare com o meu segredo</button>
+
+<script>
+  // Retorna número aleatório
+  function sorteia() {
+    return Math.round(Math.random() * 10); // Gera um número aleatório entre 0 - 10 e intere no array segredos
+  }
+
+  //   Função para gerar uma quantidade específica de números aleatórios
+  function sorteiaNumeros(quantidade) {
+    var segredos = []; // Inicia com a lista vazia
+
+    var numero = 1; // Contador
+
+    // Executa loop para gerar a quantidade de números aleatórios conforme valor passado via parâmetro
+    while (numero <= quantidade) {
+      var numeroAleatorio = sorteia();
+
+      //   Exclui o zero
+      if (numeroAleatorio !== 0) {
+        var achou = false; // Indica que um número ainda não foi sorteado
+
+        // Percorre lista de segredos para verificar se o número gerado já está na lista
+        for (var posicao = 0; posicao < segredos.length; posicao++) {
+          if (segredos[posicao] == numeroAleatorio) {
+            achou = true;
+            break;
+          }
+        }
+
+        //   Caso não localize um número na lista, add ele (evita repetição de números - evita números duplicados)
+        if (!achou) {
+          segredos.push(numeroAleatorio);
+          numero++;
+        }
+      }
+    }
+
+    return segredos; // Retorna lista com array
+  }
+
+  // Adicionando valores ao array de forma dinâmica
+  var segredos = sorteiaNumeros(3);
+
+  console.log(segredos); // Mostra a lista no console.
+
+  var input = document.querySelector("input"); // Seleciona o input
+  input.focus(); // Foca no input para receber valor
+
+  function verifica() {
+    var achou = false;
+
+    // Percorre o array
+    for (var posicao = 0; posicao < segredos.length; posicao++) {
+      // Verifica se tem o valor digitado no array
+      if (input.value == segredos[posicao]) {
+        alert("Você acertou.");
+        achou = true;
+        break; // Sai do loop
+      }
+    }
+
+    // Se falso if(achou == false)
+    if (!achou) {
+      alert("Você errou");
+    }
+
+    input.value = ""; // Limpa o input
+    input.focus(); // Foca no input para receber novo valor
+  }
+
+  var button = document.querySelector("button"); // Seleciona o botão
+  button.onclick = verifica; // Ao clicar no botão, executa a função.
+</script>

@@ -1,0 +1,39 @@
+<meta charset="UTF-8" />
+
+<input />
+<button>Compare com o meu segredo</button>
+
+<script>
+  // Trabalhando com Arrays
+  var segredos = [5, 7, 10, 2];
+
+  var input = document.querySelector("input"); // Seleciona o input
+  input.focus(); // Foca no input para receber valor
+
+  function verifica() {
+
+    var achou = false;
+
+    // Percorre o array
+    for (var posicao = 0; posicao < segredos.length; posicao++) {
+      
+        // Verifica se tem o valor digitado no array
+        if (input.value == segredos[posicao]) {
+        alert("Você acertou.");
+        achou = true;
+        break; // Sai do loop
+      } 
+    }
+
+    // Se falso if(achou == false)
+    if(!achou) {
+        alert("Você errou");
+    }
+
+    input.value = ""; // Limpa o input
+    input.focus(); // Foca no input para receber novo valor
+  }
+
+  var button = document.querySelector("button"); // Seleciona o botão
+  button.onclick = verifica; // Ao clicar no botão, executa a função.
+</script>
