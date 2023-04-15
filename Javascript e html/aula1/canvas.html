@@ -1,0 +1,39 @@
+<!-- Referência
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+ -->
+
+<!-- Área onde é possível desenhar -->
+<canvas width="600" height="400"> </canvas>
+
+<script>
+  var tela = document.querySelector("canvas"); // Seleciona o canvas
+  var pincel = tela.getContext("2d"); // Gera pincel 2d
+
+  // Cria retângulo com preenchimento total do canvas
+  pincel.fillStyle = "lightgray"; // Pinta o retângulo
+  pincel.fillRect(0, 0, 600, 400); // Utilizado para preencher um retângulo eixo X = 0, Y = 0, 600, 400 cria o retângulo com as dimensões da tela.
+
+  // Cria outro retângulo - lado esquerdo
+  pincel.fillStyle = "green";
+  pincel.fillRect(0, 0, 200, 400); // Eixo X, Eixo Y, Largura e Altura
+
+  // Cria outro retângulo - lado direito
+  pincel.fillStyle = "red";
+  pincel.fillRect(400, 0, 200, 400); // Eixo X, Eixo Y, Largura e Altura
+
+  // Cria triângulo
+  pincel.fillStyle = "yellow";
+  pincel.beginPath(); // Inicia escrita do caminho
+
+  pincel.moveTo(300, 200); // Movimentação Vertical
+  pincel.lineTo(200, 400); // Cria linha
+  pincel.lineTo(400, 400); // Cria linha
+  pincel.fill(); // preenche o triângulo
+
+  // Cria um círculo
+  pincel.fillStyle = "blue";
+  pincel.beginPath();
+  pincel.arc(300, 200, 50, 0, 2 * 3.14); // Posiciona o círculo - (Eixo X, Eixo Y, Tam. Raio, º inicial, º final)
+  pincel.fill(); // Preenche o círculo
+
+</script>
