@@ -1,0 +1,77 @@
+ANOTAÇÕES
+
+git add .: Adiciona TODOS os arquivos para serem monitorados.
+git commit -m "mensagem": Serve para descrever o que foi realizado no(s) arquivo(s) de forma breve. Ex: "Criando arquivo index.html com lista de cursos"
+git log: Mostra o histórico de commits
+ - Cada commit tem um HASH único, nome da branch, dados do autor e data da modificação
+git config --local/--global: Permite visualizar ou alterar configurações git. --local => Altera configurações no repositório atual / --global => Faz alterações em todos os repositórios.
+
+Ex.:
+git config --local user.name "Inserir nome": Seta valor para nome no repositório atual. --global seta de forma global
+git config user.name: Pega o valor de user.
+
+
+git log --oneline: Resume cada commit em uma linha
+git log -p: Exibe as alterações do commit - as setas do teclado para cima/baixo ajudam na visualização das alterações. Ao finalizar, pressionar a tecla 'q' para voltar ao normal.
+
+
+Existe uma infinidade de formatos que podemos usar como filtros para mostrar nosso histórico, e em git log cheatsheet < https://devhints.io/git-log > há vários delas. Como exemplo, testaremos git log --pretty="format:%H", comando que nos traz apenas o hash. O comando git log --pretty="format:%h %s", por sua vez, traz o hash resumido seguido pela mensagem do commit. Assim, podemos gerar o histórico da nossa aplicação em formatos personalizados.
+
+---
+Ao executar o comando git status, recebemos algumas informações que talvez não estejam tão claras, principalmente quando nos deparamos com termos como HEAD, working tree, index, etc.
+
+Apenas para esclarecer um pouco, visto que entenderemos melhor o funcionamento do Git durante o treinamento, seguem algumas definições interessantes:
+
+HEAD: Estado atual do nosso código, ou seja, onde o Git os colocou
+Working tree: Local onde os arquivos realmente estão sendo armazenados e editados
+index: Local onde o Git armazena o que será commitado, ou seja, o local entre a working tree e o repositório Git em si.
+Além disso, os possíveis estados dos nossos arquivos são explicados com detalhes neste link: <https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Gravando-Altera%C3%A7%C3%B5es-em-Seu-Reposit%C3%B3rio.
+
+---
+
+QUESTÃO
+Para que o Git saiba quem está realizando as alterações, ele precisa de algumas configurações. Na primeira vez que você tentar realizar um commit em uma máquina, ele pedirá que você o configure.
+
+Como podemos definir o nome da pessoa que executa commits no repositório local atual?
+
+RESPOSTA: git config --local user.name "Nome da pessoa"
+
+COMENTÁRIO DA RESPOSTA: Assim todos os commits executados neste repositório serão atribuídos à pessoa com nome Nome da pessoa. Para mais detalhes e outras configurações possíveis (até algumas mais avançadas), você pode conferir este link: https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+
+---
+
+Mais opções
+Conforme vimos no último vídeo, podemos visualizar o histórico de alterações em nosso projeto de forma muito fácil, através do comando git log.
+
+Apesar de ser fácil, este comando é muito poderoso. Execute >> git log --help << e veja algumas das opções possíveis. Para alguns exemplos mais fáceis de entender, você pode pesquisar sobre git log ou dar uma olhada neste link: https://devhints.io/git-log.
+
+Sair da tela de scroll
+Você deve ter reparado que ao executar >> git log -p <<, o git nos mostrou uma tela onde é possível rolar para baixo e para cima através das setas. Isso não é algo específico do git, mas sim do próprio terminal do sistema operacional. Quando finalizarmos a visualização do log, basta apertar a tecla q para voltar "ao normal" em nossa linha de comando.
+
+---
+
+Ignorando arquivos
+
+Criar um arquivo chamado >> .gitignore <<. Dentro dele, escrever o nome de todos os arquivos e/ou pastas que deseja que o git ignore / não monitore.
+
+nomeArquivo // Ignora o arquivo
+nomePasta/ // Ignora toda a pasta
+
+Necessário adicionar o >> .gitignore << e comitá-lo.
+
+git add .gitignore => git commit -m "Adicionando gitignore"
+
+
+--- 
+
+Nesta aula, aprendemos:
+
+- Que um commit é a forma de salvar um estado ou versão do nosso código;
+- Como adicionar arquivos para serem commitados com git add;
+- Como commitar arquivos, utilizando o comando git commit;
+- Como verificar o histórico de commits, através do git log e algumas de suas opções:
+- git log --oneline
+- git log -p
+- git log --pretty="parametros de formatação"
+- Como fazer o Git não monitorar arquivos, através do .gitignore
+- Que não devemos realizar commit, ou seja, salvar um estado, da nossa aplicação que não esteja funcionando.

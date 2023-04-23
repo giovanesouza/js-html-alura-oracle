@@ -1,0 +1,125 @@
+ANOTAÇÕES
+
+git checkout -- nomeArquivo OU git restore nomeArquivo: Desfaz alterações que ainda não foram adicionadas para commit
+
+git resete HEAD nomeArquivo: Desfaz alterações que já foram adicionadas para serem comitadas.
+
+git revert hashCommit: desfaz commit. Necessário dar um git log para pegar o hash
+
+git stash: salva as alterações para um local temporário, onde é possível recuperar depois
+git stash list: Mostra uma lista com todas as alterações salvas temporariamente
+git stash apply numeroStash: Aplica as modificações, porém elas continuarão na stash
+git stash drop: Remove alterações da stash
+git stash pop: Remove a última alteração adicionada e aplica as alterações salvas lá
+
+git checkout 6PrimeirosNúmerosHash: Verifica um commit
+
+
+---
+QUESTÕES
+
+1. Nós aprendemos a desfazer alterações das quais não vamos precisar mais.
+
+Quais os comandos, respectivamente, desfazem alterações antes de adicioná-las (1); depois de adicioná-las, mas antes de commitá-las (2); e após realizar o commit (3)?
+
+
+RESPOSTA:
+    1 - git checkout
+    2 - git reset
+    3 - git revert
+
+COMENTÁRIO: 
+Com o git checkout nós desfazemos uma alteração que ainda não foi adicionada ao index ou stage, ou seja, antes do git add. Depois de adicionar com git add, para desfazer uma alteração, precisamos tirá-la deste estado, com git reset. Agora, se já realizamos o commit, o comando git revert pode nos salvar.
+
+
+2. Vimos como podemos utilizar git stash para armazenar temporariamente algumas de nossas alterações.
+
+Em que momento o stash parece útil?
+
+RESPOSTA:  Quando precisamos parar o desenvolvimento de algo no meio para trabalhar em outra coisa.
+
+COMENTÁRIO: Quando precisamos pausar o desenvolvimento de alguma funcionalidade, ou correção, antes de finalizar, talvez não seja interessante realizar um commit, pois o nosso código pode não estar funcionando ainda. Nesse caso é interessante salvar o trabalho para podermos voltar a ele depois.
+
+
+3. Já utilizamos em mais de uma ocasião o comando git checkout.
+
+Resumidamente, para que serve o comando git checkout?
+
+
+RESPOSTA: Para deixar o nosso código em determinado estado
+
+COMENTÁRIO: A descrição do comando >> git checkout --help <<, em uma tradução livre é: "Atualizar os arquivos na working tree para ficarem na versão especificada. [...]". Basicamente, podemos deixar o nosso código no estado do último commit de uma branch, de um commit específico, ou mesmo tags (que veremos adiante).
+
+
+
+--- 
+
+Consolidando o seu conhecimento
+
+
+Chegou a hora de você pôr em prática o que foi visto na aula. Para isso, execute os passos listados abaixo.
+
+1) Na pasta que representa o seu projeto, faça uma alteração qualquer no arquivo index.html;
+
+2) Execute o git status e veja que há uma alteração para adicionar;
+
+3) Execute o comando git checkout -- index.html. Confira se sua alteração foi desfeita;
+
+4) Novamente, faça alguma alteração no arquivo index.html;
+
+5) Execute o comando git add index.html;
+
+6) Execute o comando git reset HEAD index.html para trazer o arquivo index.html de volta para a HEAD do projeto (remover do stage, que é o que será enviado para o commit);
+
+7) Repita o passo 3;
+
+8) Faça mais uma vez alguma alteração no código;
+
+9) Execute o comando git add index.html e o comando git commit -m "Alterando o código" para realizar um commit;
+
+10) Execute o comando git log e copie o hash deste commit recém criado;
+
+11) Rode o comando git revert {hash}, substituindo {hash} pelo hash que você copiou anteriormente;
+
+12) Confira que suas alterações foram desfeitas;
+
+13) Mude o nome do curso de Ansible para "Ansible: Infraestrutura como código";
+
+14) Execute o comando git stash para salvar estas alterações na stash;
+
+15) Altere o nome do curso de Kubernetes para "Kubernetes: Introdução a orquestração de containers";
+
+16) Execute o comando git add index.html e o comando git commit -m "Alterando o nome do curso de Kubernetes" para realizar um commit;
+
+17) Execute o comando git stash pop para trazer a última alteração da stash;
+
+18) Execute o comando git add index.html e o comando git commit -m "Alterando o nome do curso de Ansible" para realizar um commit;
+
+19) Execute o comando git push local master para enviar todas as suas alterações;
+
+20) Execute o comando git log --oneline para ver os commits de forma resumida. Copie o hash do commit de merge com a branch lista;
+
+21) Execute o comando git checkout {hash} substituindo {hash} pelo hash que você copiou;
+
+22) Veja que diversas alterações não estão mais presentes;
+
+23) Execute git checkout master para voltar à linha principal de desenvolvimento.
+
+
+--
+
+Nesta aula, aprendemos:
+
+- Que o Git pode nos ajudar a desfazer alterações que não vamos utilizar;
+- Que, para desfazer uma alteração antes de adicioná-la para commit (com git add), podemos utilizar o comando git checkout -- <arquivos>;
+- Que, para desfazer uma alteração após adicioná-la para commit, antes precisamos executar o git reset HEAD <arquivos> e depois podemos desfazê-las com git checkout -- <arquivos>;
+- Que, para revertermos as alterações realizadas em um commit, o comando git revert pode ser a solução;
+- Que o comando git revert gera um novo commit informando que alterações foram desfeitas;
+- Que, para guardar um trabalho para retomá-lo posteriormente, podemos utilizar o git stash;
+- Que, para visualizar quais alterações estão na stash, podemos utilizar o comando git stash list;
+- Que, com o comando git stash apply <numero>, podemos aplicar uma alteração específica da stash;
+- Que o comando git stash drop <numero> remove determinado item da stash;
+- Que o comando git stash pop aplica e remove a última alteração que foi adicionada na stash;
+- Que o git checkout serve para deixar a cópia do código da nossa aplicação no estado que desejarmos:
+- git checkout <branch> deixa o código no estado de uma branch com o nome <branch>;
+- git checkout <hash> deixa o código no estado do commit com o hash <hash>.

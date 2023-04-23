@@ -1,0 +1,89 @@
+ANOTAÇÕES
+
+git diff: Mostra as diferenças de um código que ainda não foi commitado (está sendo trabalhado no momento)
+
+git diff 041d212..59bb9d9: Exibe todas as diferenças de um commit a outro
+
+
+> TAGS e RELEASES
+git tag -a v0.1.0 -m "Mensagem qualquer - ex: Lançando a primeira versão (BETA) da aplicação": Cria uma versão com mensagem
+
+git push nomeBranch nomeVersion: Envia a versão para a branch escolhida
+
+git push origin v0.1.0: Envia versão para o Github
+
+
+---
+QUESTÕES
+
+1. Com o comando git diff, nós vimos que é possível visualizarmos as mudanças realizadas em determinado código. Podemos ver as diferenças entre commits, branches, etc.
+
+Como o git diff exibe as mudanças no código?
+
+
+REPOSTA:
++ linha adicionada
+- linha removida
+- linha modificada (versão antiga)
++ linha modificada (nova versão)
+
+
+COMENTÁRIO:
+
+O sinal de subtração (-) antes da linha indica que ela não está mais presente no arquivo. Já o sinal de adição (+) mostra que é uma linha nova. Alterações são representadas por uma remoção e uma adição de linha.
+
+
+
+2. Vimos como gerar versões, ou marcos interessantes em nosso sistema de controle de versões.
+
+Que resultado o envio de uma tag para o GitHub possibilita?
+
+RESPOSTA: Gera uma Release, ou seja, conseguimos baixar um arquivo compactado com o nosso código neste ponto
+
+COMENTÁRIO: O GitHub nos dá a possibilidade de baixar um arquivo compactado contendo o código no estado em que a tag foi gerada.
+
+
+---
+Consolidando o seu conhecimento
+
+Chegou a hora de você pôr em prática o que foi visto na aula. Para isso, execute os passos listados abaixo.
+
+1) Execute o comando git log -p para ver, junto a cada commit, as alterações nele realizadas;
+
+2) Execute agora o comando git log --oneline;
+
+3) Execute o comando git diff {hash do commit de merge com lista}..{hash do último commit realizado};
+
+4) Execute alguma (pequena) alteração no index.html;
+
+5) Execute o comando git diff e veja esta alteração;
+
+6) Desfaça esta última alteração;
+
+7) Execute o comando git tag -a v0.1.0 para criar uma tag no seu código;
+
+8) Execute o comando git push origin v0.1.0 para enviar esta tag para o GitHub;
+
+9) Abra a página do repositório do GitHub que você criou e confira a aba de Releases.
+
+
+---
+Nesta aula, aprendemos:
+
+- Que é possível visualizar quais alterações foram realizadas em cada arquivo, com o comando git diff;
+- Que, digitando apenas git diff, vemos as alterações em nossos arquivos que não foram adicionadas para commit (com git add);
+- Que é possível comparar as alterações entre duas branches com git diff <branch1>..<branch2>
+- Que é possível comparar as alterações feitas entre um commit e outro, através do comando git diff <commit1>..<commit2>;
+- Que o Git nos possibilita salvar marcos da nossa aplicação, como por exemplo, lançamento de versões, através do git tag;
+- Que o comando git tag -a é utilizado para gerar uma nova tag;
+- As Releases do GitHub, que são geradas para cada tag do Git criada em nosso repositório.
+
+---
+
+LEITURA COMPLEMENTAR
+
+1. Nova exigência do Git de autenticação por token, o que é e o que devo fazer?
+< https://www.alura.com.br/artigos/nova-exigencia-do-git-de-autenticacao-por-token-o-que-e-o-que-devo-fazer >
+
+
+

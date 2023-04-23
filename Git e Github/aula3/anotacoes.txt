@@ -1,0 +1,114 @@
+ANOTAÇÕES
+
+git init --bare: Representa um repositório puro. Contém apenas as alterações dos arquivos - Não contém a cópia física de cada um dos arquivos.
+
+Ao iniciar o repositório que servirá como servidor, será exibido o endereço dele. Copiá-lo. 
+
+Ex.: Initialized empty Git repository in >> C:/Users/giova/Downloads/servidor/ <<
+
+git remote: lista os repositórios remotos
+git remote add nomeRepositorio endereçoRepositorio: Adiciona repositório remoto
+- Ex: git remote add local C:/Users/giova/Downloads/servidor/ => O endereço pode ser qualquer coisa: Endereço de um computador na rede, pasta do computador, url de um servidor 
+
+git remote -v: Exibe o endereço do repositório remoto com informações de que ele pode tanto pegar quando enviar dados.
+
+git clone C:/Users/giova/Downloads/servidor/: Clona um respositório
+
+
+git push nomeRepositorio nomeBranch: Envia os arquivos/modificações para o repositório 'servidor' chamado de 'local'
+
+Ex.: git push local master
+
+git remote rename nomeAtual novoNome: Renomeia o repositório
+
+git pull [repositorio] master: Pega os arquivos do repositório remoto
+
+
+
+---
+QUESTÕES
+1. Nossa primeira tarefa foi criar um novo repositório, que será utilizado como o nosso "servidor" Git, ou seja, todos os membros da equipe o acessarão para compartilhar suas mudanças.
+
+Como fizemos para definir um repositório Git neste caso?
+
+RESPOSTA: git init --bare
+
+COMENTÁRIO RESPOSTA: Com este comando nós criamos um repositório que não terá a working tree, ou seja, não conterá uma cópia dos nossos arquivos. Como o repositório servirá apenas como servidor, para que outros membros da equipe sincronizem seus trabalhos, poupamos espaço de armazenamento desta forma.
+
+
+2. Antes de sincronizar as nossas mudanças no código com algum repositório remoto, precisamos adicioná-lo ao nosso repositório local.
+
+Como adicionamos esta ligação entre os repositórios?
+
+RESPOSTA: git remote add nome-repositorio caminho/para/o/repositorio
+
+COMENTÁRIO: Alternativa correta! Desta forma teremos um link do nosso repositório local com o repositório remoto, que chamamos de nome-repositorio, que está armazenado em caminho/para/o/repositorio.
+
+
+
+3. Além de adicionar repositórios remotos para sincronizar os dados, vimos que o git clone traz um repositório remoto para o nosso computador, criando um repositório local.
+
+Ao alterar os códigos em nosso repositório local, como enviar as alterações para o repositório remoto?
+
+RESPOSTA: git push [repositorio] master
+
+COMENTÁRIO: Desta forma, nós enviamos as alterações em nosso branch master (falaremos mais sobre branches já já) para o repositório remoto. Basta substituir [repositorio] pelo nome que demos ao repositório ao adicioná-lo. Já para trazer os dados que estiverem no repositório remoto, podemos utilizar o git pull [repositorio] master.
+
+
+--- 
+Chegou a hora de você pôr em prática o que foi visto na aula. Para isso, execute os passos listados abaixo.
+
+1) Crie uma pasta nova em seu computador;
+
+2) No terminal (ou Git Bash, no Windows) navegue até a pasta recém criada (utilize o comando cd para navegar entre pastas);
+
+3) Execute o comando git init --bare;
+
+OBS: Não se esqueça do parâmetro --bare. Caso tenha executado o comando init sem esse parâmetro, execute na sequência o seguinte comando: git config core.bare true.
+
+4) Navegue até a pasta onde se encontra o seu projeto;
+
+5) Execute o comando git remote add local {caminho}. Substitua {caminho} pelo caminho completo da pasta recém criada;
+
+6) Crie uma nova pasta em seu computador, para representar o trabalho de outra pessoa;
+
+7) No terminal (ou Git Bash, no Windows) navegue até a pasta recém criada;
+
+8) Execute o comando git clone {caminho} projeto. Substitua {caminho} pelo caminho completo da pasta que criamos no primeiro passo;
+
+9) Observe que o repositório clonado está vazio;
+
+10) Acesse a pasta Projeto e execute o comando 'git remote rename origin local' para renomear o repositório local da outra pessoa de "origin" para "local";
+
+11) Navegue até a pasta onde se encontra o seu projeto original;
+
+12) Execute o comando git push local master para enviar as suas modificações para o seu servidor;
+
+13) Navegue até a pasta criada no passo 6;
+
+14) Execute o comando git pull local master para baixar as modificações;
+
+15) Abra o seu navegador e acesse http://github.com/;
+
+16) Crie uma conta;
+
+17) Crie um novo repositório, clicando no símbolo de adição no canto superior direito;
+
+18) No terminal (ou Git Bash, no Windows) adicione, ao seu projeto inicial, o repositório remoto recém criado (os comandos são mostrados pelo próprio GitHub);
+
+19) Execute git push origin main para enviar as suas alterações para o repositório no GitHub.
+
+
+
+--- 
+Nesta aula, aprendemos:
+
+- O que são repositórios remotos;
+- Como criar um repositório Git sem uma cópia dos arquivos (com --bare) para ser utilizado como servidor;
+- Como adicionar links para os repositórios remotos, com o comando git remote add;
+- Como baixar um repositório pela primeira vez, clonando-o com o comando git clone;
+- Como enviar as nossas alterações para um repositório remoto, com git push;
+- Como atualizar o nosso repositório com os dados no repositório remoto, utilizando git pull;
+- O que é e para que serve o GitHub;
+- Como criar um repositório no GitHub;
+- Como adicionar um repositório do GitHub como repositório remoto.

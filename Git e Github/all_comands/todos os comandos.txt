@@ -1,0 +1,89 @@
+Antes de qualquer interação com o git, é necessário informar quem é você para que ele armazene corretamente os dados do autor de cada uma das alterações no código.
+
+Caso esteja começando a utilizar o git agora, basta digitar os seguintes comandos (estando na pasta do repositório git):
+
+git config --local user.name "Seu nome aqui"
+git config --local user.email "seu@email.aqui"
+
+
+---
+git init: inicializa repositório
+git status: Mostra o estado do repositório
+
+
+git add .: Adiciona TODOS os arquivos para serem monitorados.
+git commit -m "mensagem": Serve para descrever o que foi realizado no(s) arquivo(s) de forma breve. Ex: "Criando arquivo index.html com lista de cursos"
+git log: Mostra o histórico de commits
+ - Cada commit tem um HASH único, nome da branch, dados do autor e data da modificação
+git config --local/--global: Permite visualizar ou alterar configurações git. --local => Altera configurações no repositório atual / --global => Faz alterações em todos os repositórios.
+
+Ex.:
+git config --local user.name "Inserir nome": Seta valor para nome no repositório atual. --global seta de forma global
+git config user.name: Pega o valor de user.
+
+
+git log --oneline: Resume cada commit em uma linha
+git log -p: Exibe as alterações do commit - as setas do teclado para cima/baixo ajudam na visualização das alterações. Ao finalizar, pressionar a tecla 'q' para voltar ao normal.
+
+
+
+git init --bare: Representa um repositório puro. Contém apenas as alterações dos arquivos - Não contém a cópia física de cada um dos arquivos.
+
+Ao iniciar o repositório que servirá como servidor, será exibido o endereço dele. Copiá-lo. 
+
+Ex.: Initialized empty Git repository in >> C:/Users/giova/Downloads/servidor/ <<
+
+git remote: lista os repositórios remotos
+git remote add nomeRepositorio endereçoRepositorio: Adiciona repositório remoto
+- Ex: git remote add local C:/Users/giova/Downloads/servidor/ => O endereço pode ser qualquer coisa: Endereço de um computador na rede, pasta do computador, url de um servidor 
+
+git remote -v: Exibe o endereço do repositório remoto com informações de que ele pode tanto pegar quando enviar dados.
+
+git clone C:/Users/giova/Downloads/servidor/: Clona um respositório
+
+
+git push nomeRepositorio nomeBranch: Envia os arquivos/modificações para o repositório 'servidor' chamado de 'local'
+
+Ex.: git push local master
+
+git remote rename nomeAtual novoNome: Renomeia o repositório
+
+git pull [repositorio] master: Pega os arquivos do repositório remoto
+
+
+git branch: Lista todas as branchs do projeto
+git branch nomeBranch: Cria uma nova branch
+git checkout nomeBranch: Muda de branch
+git checkout -b nomeBranch: Cria branch e muda para ela
+
+git merge nomeBranch: Dentro da branch master digitar o comando com a branch que deseja trazer para ela. (NÃO MOVE OS COMMITS)
+
+git rebase nomeBranch: Pega os commits de uma branch e envia para branch principal (master)
+
+
+git checkout -- nomeArquivo OU git restore nomeArquivo: Desfaz alterações que ainda não foram adicionadas para commit
+
+git resete HEAD nomeArquivo: Desfaz alterações que já foram adicionadas para serem comitadas.
+
+git revert hashCommit: desfaz commit. Necessário dar um git log para pegar o hash
+
+git stash: salva as alterações para um local temporário, onde é possível recuperar depois
+git stash list: Mostra uma lista com todas as alterações salvas temporariamente
+git stash apply numeroStash: Aplica as modificações, porém elas continuarão na stash
+git stash drop: Remove alterações da stash
+git stash pop: Remove a última alteração adicionada e aplica as alterações salvas lá
+
+git checkout 6PrimeirosNúmerosHash: Verifica um commit
+
+
+git diff: Mostra as diferenças de um código que ainda não foi commitado (está sendo trabalhado no momento)
+
+git diff 041d212..59bb9d9: Exibe todas as diferenças de um commit a outro
+
+
+> TAGS e RELEASES
+git tag -a v0.1.0 -m "Mensagem qualquer - ex: Lançando a primeira versão (BETA) da aplicação": Cria uma versão com mensagem
+
+git push nomeBranch nomeVersion: Envia a versão para a branch escolhida
+
+git push origin v0.1.0: Envia versão para o Github
